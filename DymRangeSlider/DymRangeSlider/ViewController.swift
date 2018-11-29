@@ -15,11 +15,11 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.black
         
         let slider = RangeSlider(frame: CGRect(x: 50, y: 90, width: 200, height: 20))
-        slider.type = .fullRange
+        slider.type = .singleMin
         slider.minimumValue = 10
         slider.maximumValue = 100
         slider.boundValuesInRange()
-        slider.upperValue = 50
+    
         view.addSubview(slider)
     }
 

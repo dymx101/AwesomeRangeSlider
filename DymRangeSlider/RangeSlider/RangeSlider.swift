@@ -186,9 +186,15 @@ extension RangeSlider {
     }
     
     func boundValuesInRange() {
-        let gap = type == .fullRange ? disabledRange : 0
-        lowerValue = boundValue(lowerValue, toLowerValue: minimumValue, upperValue: maximumValue - gap)
-        upperValue = boundValue(upperValue, toLowerValue: minimumValue + gap, upperValue: maximumValue)
+        
+        lowerValue = boundValue(lowerValue, toLowerValue: minimumValue, upperValue: maximumValue - disabledRange)
+        upperValue = boundValue(upperValue, toLowerValue: minimumValue + disabledRange, upperValue: maximumValue)
+        
+        if type == .singleMin {
+            upperValue = maximumValue
+        } else if type == .singleMax {
+            lowerValue = minimumValue
+        }
     }
 }
 
